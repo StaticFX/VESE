@@ -25,17 +25,20 @@ import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
 import de.vese.vese.logger.Logger;
+import de.vese.vese.webservice.WebServiceApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Timer;
 
+@SpringBootApplication
+@RestController
 public class VESE {
-    private String version = "1.0.0 - Alpha";
+    public static final String VERSION = "1.0.0 - Alpha";
 
     private CAA caa;
 
@@ -47,6 +50,13 @@ public class VESE {
 
     private File location;
 
+    //Termial via the. JLine 3 API
+
+    public static final String VESE_ANCII_ART = "\n__   __ ___  ___  ___\n" +
+            "\\ \\ / /| __|/ __|| __|\n" +
+            " \\   / | _| \\__ \\| _| \n" +
+            "  \\_/  |___||___/|___|\n";
+
     private PrintStream console = new PrintStream(new FileOutputStream(FileDescriptor.out));
 
     private SimpleDateFormat savingTimeFormat =  new SimpleDateFormat("dd MM yyyy HH-mm-ss");
@@ -55,20 +65,16 @@ public class VESE {
 
     //VESE main startup Method
     public static void main(String[] args) {
-        new VESE();
+        new VESE(args);
     }
 
     public static VESE getInstance() {
         return INSTANCE;
     }
 
-    public VESE() {
+    public VESE(String[] args) {
         INSTANCE = this;
         startMillis = System.currentTimeMillis();
-
-        //CAA = Console Application API
-        service = new Timer("Console");
-        caa = new CAA(System.in,service ,true);
 
         //this will figure out where the .jar file is located
         URL urlLocation = getClass().getProtectionDomain().getCodeSource().getLocation();
@@ -76,11 +82,22 @@ public class VESE {
 
         this.logger = new Logger();
 
+        System.out.println("Starting VESE " + VERSION);
+        System.out.println(VESE_ANCII_ART);
+
+        //CAA = Console Application API
+        service = new Timer("Console");
+        caa = new CAA(System.in,service ,true);
+
+        System.out.println("VESE was found in: " + location.getAbsolutePath());
+
+
         registerCommands();
 
+        System.out.println("Starting WebServie via. Spring");
+        SpringApplication.run(WebServiceApplication.class, args);
+
         //Outputting general Information
-
-
 
     }
 

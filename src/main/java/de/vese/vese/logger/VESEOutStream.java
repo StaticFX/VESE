@@ -19,70 +19,70 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + b);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + b);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + b);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + b);    }
 
     @Override
     public void print(char c) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + c);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + c);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + c);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + c);    }
 
     @Override
     public void print(int i) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + i);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + i);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + i);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + i);    }
 
     @Override
     public void print(long l) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + l);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + l);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + l);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + l);    }
 
     @Override
     public void print(float f) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + f);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + f);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + f);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : "+ f);    }
 
     @Override
     public void print(double d) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + d);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + d);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + d);    }
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + d);    }
 
     @Override
     public void print(@NotNull char[] s) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + s);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + s);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + s);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + s);
     }
 
     @Override
@@ -90,10 +90,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + s);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + s);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + s);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + s);
     }
 
     @Override
@@ -102,10 +102,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + obj);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + obj);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + obj);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + obj);
     }
 
     @Override
@@ -114,10 +114,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : ");
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : ");
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : ");
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : ");
     }
 
     @Override
@@ -126,10 +126,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -138,10 +138,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -150,10 +150,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -162,10 +162,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -174,10 +174,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -186,10 +186,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -198,10 +198,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -210,10 +210,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 
     @Override
@@ -222,9 +222,9 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getConsole().println("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile("[VESE] [" + time + "] : " + x);
+        VESE.getInstance().getLogger().logToFile("[" + ConsoleCollors.GREEN + "VESE " + ConsoleCollors.RESET + "] [" + ConsoleCollors.BLUE + time + ConsoleCollors.RESET + "] : " + x);
     }
 }
