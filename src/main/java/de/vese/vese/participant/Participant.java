@@ -25,7 +25,10 @@ public class Participant {
         this.personality = personality;
         this.alive = alive;
     }
-    //Selfmade functions
+    //Self-Made functions
+    public void buyItems() {
+        
+    }
     public void endTurn() {
         needs.update(personality);
         alive = needs.isAlive();
