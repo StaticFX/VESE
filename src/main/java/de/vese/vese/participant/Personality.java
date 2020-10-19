@@ -29,6 +29,7 @@ public class Personality {
 
     public Personality(int importanceOfHygiene, int importanceOfPrestige, int importanceOfSecurity, int importanceOfHealth,
                        int hungriness, int sleepiness, int boredomTolerance) {
+
         this.boredomTolerance = boredomTolerance;
         this.hungriness = hungriness;
         this.importanceOfHealth = importanceOfHealth;

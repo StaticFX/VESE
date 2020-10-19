@@ -24,7 +24,9 @@ import de.staticred.caa.CAA;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
+import de.vese.vese.commands.RestartCommand;
 import de.vese.vese.logger.Logger;
+import de.vese.vese.webservice.RouterManager;
 import de.vese.vese.webservice.WebServiceApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -61,7 +63,10 @@ public class VESE {
 
     private SimpleDateFormat savingTimeFormat =  new SimpleDateFormat("dd MM yyyy HH-mm-ss");
 
+    //timeStamp since vese is running
     private long startMillis;
+
+    public static RouterManager routingManger;
 
     //VESE main startup Method
     public static void main(String[] args) {
@@ -82,6 +87,9 @@ public class VESE {
 
         this.logger = new Logger();
 
+        //manger class used to rout ingoing inputs from the frontEnd
+        routingManger = new RouterManager();
+
         System.out.println("Starting VESE " + VERSION);
         System.out.println(VESE_ANCII_ART);
 
@@ -101,10 +109,23 @@ public class VESE {
 
     }
 
+    public static void restartVese() {
+        try {
+            System.out.println(VESE.getInstance().location.getParent());
+            Runtime.getRuntime().exec("D:");
+            Runtime.getRuntime().exec("cd " + VESE.getInstance().location.getParent());
+            Runtime.getRuntime().exec("mvnw spring-boot:run");
+            VESE.stop();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void registerCommands() {
         caa.commandHandler.registerCommand(new EndCommand("","end","End Vese and saves all data"));
         caa.commandHandler.registerCommand(new HelpCommand("","help", "Use ?command to see a commands descirption"));
         caa.commandHandler.registerCommand(new ListCommandsCommand("","listcommands", "Lists every command"));
+        caa.commandHandler.registerCommand(new RestartCommand("","restart", "Restart VESE"));
     }
 
     public static void stop() {

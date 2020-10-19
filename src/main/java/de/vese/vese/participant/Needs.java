@@ -7,7 +7,7 @@ package de.vese.vese.participant;
  */
 /*
 These are the needs of all Participants.
-Their exeleration time is influenced by the Participants Personality.
+Their acceleration time is influenced by the Participants Personality.
 They can be increased by buying Items.
 They decrease for the normal person per turn with a Value of 100
 If they are down to zero a Participants health decreases by a factor specific to the need which is at 0.
@@ -46,11 +46,7 @@ public class Needs {
         security -= 100 + MAXSECURITYCHANGE * (personality.getImportanceOfSecurity()/100);
     }
     public boolean isAlive(){
-        if (health > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return health > 0;
     }
     //Getter and Setter
     public double getHealth() {
