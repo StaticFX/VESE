@@ -2,7 +2,7 @@ package de.vese.vese.participant;
 
 /*
     VESE - Participant
-    Version: 1.0.0
+    Version: 1.0.1
     Author: David
     Alias: Dawitschi
  */
@@ -12,18 +12,33 @@ A participant is like a real life person it has a personality, capital, needs an
 Also it can trade stocks and buy items from the market.
  */
 
-import java.beans.PersistenceDelegate;
-
 public class Participant {
     private Personality personality;
     private double capital;
     private Needs needs;
     private Job job;
-    public Participant(Personality personality, double capital, Needs needs, Job job) {
+    private boolean alive;
+    public Participant(Personality personality, double capital, Needs needs, Job job, boolean alive) {
         this.capital = capital;
         this.job = job;
         this.needs = needs;
         this.personality = personality;
+        this.alive = alive;
+    }
+    //Selfmade functions
+    public void endTurn() {
+        needs.update(personality);
+        alive = needs.isAlive();
+        capital += job.getPay();
+    }
+    //Getter and Setter
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 
     public Personality getPersonality() {
