@@ -9,9 +9,11 @@ import de.vese.vese.company.Company;
     Alias: Dawitschi
  */
 public class Job {
+
     private Company company;
     private Participant participant;
     private double pay;
+
     public Job(Company company, Participant participant, double pay) {
         this.participant = participant;
         this.company = company;
