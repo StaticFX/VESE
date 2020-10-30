@@ -9,6 +9,9 @@ import java.util.List;
     Author: David
     Alias: Dawitschi
  */
+/*
+Offers have to be from lowest price to highest.
+ */
 public class Market {
     private List<Offer> offers;
     private Item tradingItem;
@@ -23,4 +26,19 @@ public class Market {
     //Getter and Setter
 
 
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
+    }
+
+    public Item getTradingItem() {
+        return tradingItem;
+    }
+
+    public void setTradingItem(Item tradingItem) {
+        this.tradingItem = tradingItem;
+    }
 }

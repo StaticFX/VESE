@@ -26,6 +26,8 @@ import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
 import de.vese.vese.commands.RestartCommand;
 import de.vese.vese.logger.Logger;
+import de.vese.vese.market.Item;
+import de.vese.vese.market.Market;
 import de.vese.vese.webservice.RouterManager;
 import de.vese.vese.webservice.WebServiceApplication;
 import org.springframework.boot.SpringApplication;
@@ -35,6 +37,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 
 @SpringBootApplication

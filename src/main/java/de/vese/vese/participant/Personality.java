@@ -6,6 +6,9 @@ package de.vese.vese.participant;
     Alias: Dawitschi
  */
 
+import java.util.HashMap;
+import java.util.List;
+
 /*
     This determines the Personality trades of a participant such as:
     -importanceOfHygiene
@@ -19,79 +22,28 @@ package de.vese.vese.participant;
     These influence the Needs.
      */
 public class Personality {
-    private int importanceOfHygiene;
-    private int importanceOfHealth;
-    private int importanceOfPrestige;
-    private int importanceOfSecurity;
-    private int hungriness;
-    private int sleepiness;
-    private int boredomTolerance;
+    private  List<Double> importanceOfNeed;
+    private List<Double> priorizationValues;
+    public Personality(List<Double> importanceOfNeed, List<Double> priorizationValues) {
+        this.importanceOfNeed = importanceOfNeed;
+        this.priorizationValues = priorizationValues;
 
-    public Personality(int importanceOfHygiene, int importanceOfPrestige, int importanceOfSecurity, int importanceOfHealth,
-                       int hungriness, int sleepiness, int boredomTolerance) {
+    }
+    //Getter and Setter
 
-        this.boredomTolerance = boredomTolerance;
-        this.hungriness = hungriness;
-        this.importanceOfHealth = importanceOfHealth;
-        this.importanceOfHygiene = importanceOfHygiene;
-        this.importanceOfPrestige = importanceOfPrestige;
-        this.importanceOfSecurity = importanceOfSecurity;
-        this.sleepiness = sleepiness;
+    public List<Double> getImportanceOfNeed() {
+        return importanceOfNeed;
     }
 
-    public int getImportanceOfHygiene() {
-        return importanceOfHygiene;
+    public void setImportanceOfNeed(List<Double> importanceOfNeed) {
+        this.importanceOfNeed = importanceOfNeed;
     }
 
-    public void setImportanceOfHygiene(int importanceOfHygiene) {
-        this.importanceOfHygiene = importanceOfHygiene;
+    public List<Double> getPriorizationValues() {
+        return priorizationValues;
     }
 
-    public int getImportanceOfHealth() {
-        return importanceOfHealth;
-    }
-
-    public void setImportanceOfHealth(int importanceOfHealth) {
-        this.importanceOfHealth = importanceOfHealth;
-    }
-
-    public int getImportanceOfPrestige() {
-        return importanceOfPrestige;
-    }
-
-    public void setImportanceOfPrestige(int importanceOfPrestige) {
-        this.importanceOfPrestige = importanceOfPrestige;
-    }
-
-    public int getImportanceOfSecurity() {
-        return importanceOfSecurity;
-    }
-
-    public void setImportanceOfSecurity(int importanceOfSecurity) {
-        this.importanceOfSecurity = importanceOfSecurity;
-    }
-
-    public int getHungriness() {
-        return hungriness;
-    }
-
-    public void setHungriness(int hungriness) {
-        this.hungriness = hungriness;
-    }
-
-    public int getSleepiness() {
-        return sleepiness;
-    }
-
-    public void setSleepiness(int sleepiness) {
-        this.sleepiness = sleepiness;
-    }
-
-    public int getBoredomTolerance() {
-        return boredomTolerance;
-    }
-
-    public void setBoredomTolerance(int boredomTolerance) {
-        this.boredomTolerance = boredomTolerance;
+    public void setPriorizationValues(List<Double> priorizationValues) {
+        this.priorizationValues = priorizationValues;
     }
 }
