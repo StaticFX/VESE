@@ -12,13 +12,9 @@ A participant is like a real life person it has a personality, capital, needs an
 Also it can trade stocks and buy items from the market.
  */
 
-import de.vese.vese.market.Item;
-import de.vese.vese.market.Market;
+import de.vese.vese.market.MarketDAO;
 import de.vese.vese.market.Offer;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Participant {
@@ -36,8 +32,21 @@ public class Participant {
     }
     //Self-Made functions
     public void buyItems() {
-        //go through all markets and evaluate them then buy if you want to
-
+        //While you have enough money to buy something AND want to buy something
+        boolean isWillingToBuy = true;
+        while((capital >= MarketDAO.getCheapestPrice()) && isWillingToBuy) {
+            //go through all markets and evaluate them then buy if you want to
+            List<Offer> cheapestOffers = MarketDAO.getCheapestOffers();
+            double bestOfferEvaluation = 0;
+            Offer bestOffer = null;
+            for (Offer offer : cheapestOffers) {
+                if (evaluateOffer(offer) > bestOfferEvaluation) {
+                    bestOffer = offer;
+                    bestOfferEvaluation = evaluateOffer(offer);
+                }
+            }
+            buy(bestOffer, 1);
+        }
     }
 
     public double evaluateOffer(Offer offer) {
@@ -54,11 +63,17 @@ public class Participant {
     }
 
     public void buy(Offer offer, int amount) {
-
+        double price = offer.getPrice();
+        offer.setAmount(offer.getAmount() - amount);
+        capital -= price;
+        for(int i = 0;i < offer.getProduct().getNeedsSatisfied().size(); i++) {
+            double needOfProduct = offer.getProduct().getNeedsSatisfied().get(i);
+            double needOfParticipant = needs.getNeedValueList().get(i);
+            needs.getNeedValueList().set(i, needOfParticipant + needOfProduct);
+        }
     }
     public void endTurn() {
         needs.update(false, personality);
-        capital += job.getPay();
     }
     //Getter and Setter
 
