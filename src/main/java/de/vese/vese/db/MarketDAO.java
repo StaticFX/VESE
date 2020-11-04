@@ -1,4 +1,4 @@
-package de.vese.vese.market;
+package de.vese.vese.db;
 
 import de.vese.vese.simulation.market.Offer;
 
