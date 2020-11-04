@@ -1,10 +1,8 @@
-package de.vese.vese.webservice;
+package de.vese.vese.backendrouting.webservice;
 
 import de.vese.vese.VESE;
-import org.json.JSONObject;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 

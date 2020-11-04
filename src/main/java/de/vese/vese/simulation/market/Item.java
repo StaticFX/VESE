@@ -1,9 +1,8 @@
-package de.vese.vese.market;
+package de.vese.vese.simulation.market;
 
-import de.vese.vese.participant.Needs;
+import de.vese.vese.simulation.participant.Needs;
 
 import java.util.List;
-import java.util.Vector;
 
 /*
     VESE - Item

@@ -1,4 +1,4 @@
-package de.vese.vese.market;
+package de.vese.vese.simulation.market;
 /*
     VESE - Offer
     Version: 1.0.0

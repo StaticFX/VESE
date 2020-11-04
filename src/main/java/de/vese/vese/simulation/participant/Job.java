@@ -1,6 +1,6 @@
-package de.vese.vese.participant;
+package de.vese.vese.simulation.participant;
 
-import de.vese.vese.company.Company;
+import de.vese.vese.simulation.company.Company;
 
 /*
     VESE - Job

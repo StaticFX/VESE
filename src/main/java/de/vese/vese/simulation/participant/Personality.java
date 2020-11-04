@@ -1,4 +1,4 @@
-package de.vese.vese.participant;
+package de.vese.vese.simulation.participant;
 /*
     VESE - Personality
     Version: 1.0.1
