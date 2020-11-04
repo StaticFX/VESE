@@ -6,7 +6,7 @@ import de.vese.vese.market.Market;
 import de.vese.vese.market.Offer;
 import de.vese.vese.participant.Job;
 import de.vese.vese.participant.Participant;
-import de.vese.vese.participant.Trait;
+import de.vese.vese.simulation.participant.Trait;
 =======
 import de.vese.vese.simulation.market.Item;
 import de.vese.vese.simulation.market.Market;

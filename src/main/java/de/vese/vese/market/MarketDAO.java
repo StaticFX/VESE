@@ -1,5 +1,7 @@
 package de.vese.vese.market;
 
+import de.vese.vese.simulation.market.Offer;
+
 import java.util.List;
 
 public class MarketDAO {
