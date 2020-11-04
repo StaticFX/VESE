@@ -24,12 +24,9 @@ import de.staticred.caa.CAA;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
-import de.vese.vese.commands.RestartCommand;
 import de.vese.vese.logger.Logger;
-import de.vese.vese.market.Item;
-import de.vese.vese.market.Market;
-import de.vese.vese.webservice.RouterManager;
-import de.vese.vese.webservice.WebServiceApplication;
+import de.vese.vese.backendrouting.webservice.RouterManager;
+import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,8 +35,10 @@ import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Timer;
+import java.util.regex.Pattern;
 
 @SpringBootApplication
 @RestController
@@ -85,6 +84,12 @@ public class VESE {
         INSTANCE = this;
         startMillis = System.currentTimeMillis();
 
+
+
+
+
+
+
         //this will figure out where the .jar file is located
         URL urlLocation = getClass().getProtectionDomain().getCodeSource().getLocation();
         location = new File(urlLocation.getPath()).getParentFile();
@@ -113,23 +118,11 @@ public class VESE {
 
     }
 
-    public static void restartVese() {
-        try {
-            System.out.println(VESE.getInstance().location.getParent());
-            Runtime.getRuntime().exec("D:");
-            Runtime.getRuntime().exec("cd " + VESE.getInstance().location.getParent());
-            Runtime.getRuntime().exec("mvnw spring-boot:run");
-            VESE.stop();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void registerCommands() {
         caa.commandHandler.registerCommand(new EndCommand("","end","End Vese and saves all data"));
         caa.commandHandler.registerCommand(new HelpCommand("","help", "Use ?command to see a commands descirption"));
         caa.commandHandler.registerCommand(new ListCommandsCommand("","listcommands", "Lists every command"));
-        caa.commandHandler.registerCommand(new RestartCommand("","restart", "Restart VESE"));
     }
 
     public static void stop() {

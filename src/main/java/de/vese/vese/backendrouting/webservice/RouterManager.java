@@ -1,7 +1,7 @@
-package de.vese.vese.webservice;
+package de.vese.vese.backendrouting.webservice;
 
 import de.vese.vese.util.AuthenticationManager;
-import de.vese.vese.webservice.routers.VESERequestRouter;
+import de.vese.vese.backendrouting.webservice.routers.VESERequestRouter;
 import org.json.JSONObject;
 
 public class RouterManager {

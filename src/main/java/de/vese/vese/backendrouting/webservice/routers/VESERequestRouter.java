@@ -1,4 +1,4 @@
-package de.vese.vese.webservice.routers;
+package de.vese.vese.backendrouting.webservice.routers;
 
 
 /*
@@ -16,9 +16,8 @@ package de.vese.vese.webservice.routers;
  */
 
 import de.vese.vese.VESE;
-import de.vese.vese.util.AuthenticationManager;
-import de.vese.vese.webservice.Priority;
-import de.vese.vese.webservice.Router;
+import de.vese.vese.backendrouting.webservice.Priority;
+import de.vese.vese.backendrouting.webservice.Router;
 import org.json.JSONObject;
 
 public class VESERequestRouter extends Router {

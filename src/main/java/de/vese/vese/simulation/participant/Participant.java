@@ -1,4 +1,4 @@
-package de.vese.vese.participant;
+package de.vese.vese.simulation.participant;
 
 /*
     VESE - Participant
@@ -12,13 +12,8 @@ A participant is like a real life person it has a personality, capital, needs an
 Also it can trade stocks and buy items from the market.
  */
 
-import de.vese.vese.market.Item;
-import de.vese.vese.market.Market;
-import de.vese.vese.market.Offer;
+import de.vese.vese.simulation.market.Offer;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class Participant {

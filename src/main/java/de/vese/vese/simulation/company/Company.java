@@ -1,9 +1,9 @@
-package de.vese.vese.company;
+package de.vese.vese.simulation.company;
 
-import de.vese.vese.market.Item;
-import de.vese.vese.market.Market;
-import de.vese.vese.market.Offer;
-import de.vese.vese.participant.Job;
+import de.vese.vese.simulation.market.Item;
+import de.vese.vese.simulation.market.Market;
+import de.vese.vese.simulation.market.Offer;
+import de.vese.vese.simulation.participant.Job;
 
 import java.util.List;
 /*
