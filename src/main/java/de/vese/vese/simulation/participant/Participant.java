@@ -31,6 +31,7 @@ public class Participant {
         this.alive = alive;
     }
     //Self-Made functions
+
     public void buyItems() {
         //While you have enough money to buy something AND want to buy something
         boolean isWillingToBuy = true;

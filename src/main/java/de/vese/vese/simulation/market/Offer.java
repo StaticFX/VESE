@@ -1,4 +1,7 @@
 package de.vese.vese.simulation.market;
+
+import de.vese.vese.simulation.company.Company;
+
 /*
     VESE - Offer
     Version: 1.0.0
@@ -9,10 +12,12 @@ public class Offer {
     private Item product;
     private double price;
     private  int amount;
-    public Offer(Item product, double price, int amount) {
+    private Company company;
+    public Offer(Item product, double price, int amount, Company company) {
         this.amount = amount;
         this.price = price;
         this.product = product;
+        this.company = company;
     }
 
     public Item getProduct() {

@@ -1,6 +1,8 @@
 package de.vese.vese.simulation.market;
 
 
+import de.vese.vese.simulation.company.Company;
+
 import java.util.List;
 
 /*

@@ -6,6 +6,7 @@ import de.vese.vese.simulation.market.Offer;
 import de.vese.vese.simulation.participant.Job;
 import de.vese.vese.simulation.participant.Participant;
 import de.vese.vese.simulation.participant.Trait;
+import de.vese.vese.simulation.utilities.Utilities;
 
 import java.util.List;
 /*
@@ -19,16 +20,34 @@ public class Company {
     private List<Job> jobs;
     private Item product;
     private int stock;
-    public Company(List<Job> jobs, Item product, int stock) {
+    private double lastExpenses;
+    private double lastProfitMargin;
+    public Company(List<Job> jobs, Item product, int stock, double lastProfitMargin, double lastExpenses) {
         this.jobs = jobs;
         this.product = product;
         this.stock = stock;
+        this.lastProfitMargin = lastProfitMargin;
+        this.lastExpenses = lastExpenses;
     }
     //Self-made functions
     public void makeTurnDecisions() {
         //decide how much to produce
-        int amount = (int) (calculateProductionPoints()/product.getProductionCosts());
+        int amountProduced = (int) (calculateProductionPoints()/product.getProductionCosts());
         //decide on a profit margin
+        if (stock > 0) {
+            changeProfitMargin(false);
+        } else {
+            changeProfitMargin(true);
+        }
+        // Set price and make offer on market
+        double price = (lastExpenses/amountProduced) * (1 + lastProfitMargin);
+        //Getting fitting market and make the offer
+        Market market = Utilities.getMarket(product);
+        market.makeOffer(new Offer(product, price, amountProduced, this));
+    }
+
+    public void changeProfitMargin(boolean higher) {
+
     }
     public double calculateProductionPoints() {
         double productionPoints = 0;
@@ -45,10 +64,6 @@ public class Company {
             productionPoints += 100 + Trait.values()[i].getMaxChange() * participant.getPersonality().getValueOfTraits().get(i);
         }
         return productionPoints;
-    }
-
-    public void makeOfferOnMarket(Market market, int amount, int price) {
-        market.makeOffer(new Offer(product, price, amount));
     }
     //Getter and Setter
     public int getStock() {
