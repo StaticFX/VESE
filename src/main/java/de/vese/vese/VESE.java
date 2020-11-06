@@ -21,24 +21,22 @@ package de.vese.vese;
 
 
 import de.staticred.caa.CAA;
+import de.vese.vese.backendrouting.webservice.RouterManager;
+import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
+import de.vese.vese.logger.ConsoleColors;
 import de.vese.vese.logger.Logger;
-import de.vese.vese.backendrouting.webservice.RouterManager;
-import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.*;
+import java.io.File;
+import java.io.PrintStream;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Timer;
-import java.util.regex.Pattern;
 
 @SpringBootApplication
 @RestController
@@ -55,14 +53,16 @@ public class VESE {
 
     private File location;
 
+    public static final String PREFIX = "VESE\\> ";
+
     //Termial via the. JLine 3 API
 
-    public static final String VESE_ANCII_ART = "\n__   __ ___  ___  ___\n" +
-            "\\ \\ / /| __|/ __|| __|\n" +
-            " \\   / | _| \\__ \\| _| \n" +
-            "  \\_/  |___||___/|___|\n";
+    public static final String VESE_ANCII_ART = "__   __ ___  ___  ___" +
+            "\\ \\ / /| __|/ __|| __|" +
+            " \\   / | _| \\__ \\| _|" +
+            "  \\_/  |___||___/|___|";
 
-    private PrintStream console = new PrintStream(new FileOutputStream(FileDescriptor.out));
+    private PrintStream console;
 
     private SimpleDateFormat savingTimeFormat =  new SimpleDateFormat("dd MM yyyy HH-mm-ss");
 
@@ -84,29 +84,31 @@ public class VESE {
         INSTANCE = this;
         startMillis = System.currentTimeMillis();
 
+        //vese will always return to this stream as the out for the console
+        console = System.out;
 
 
-
-
-
+        //CAA = Console Application API
+        service = new Timer("Console");
+        caa = new CAA(System.in,service ,true);
 
         //this will figure out where the .jar file is located
         URL urlLocation = getClass().getProtectionDomain().getCodeSource().getLocation();
         location = new File(urlLocation.getPath()).getParentFile();
 
         this.logger = new Logger();
-
         //manger class used to rout ingoing inputs from the frontEnd
         routingManger = new RouterManager();
 
-        System.out.println("Starting VESE " + VERSION);
-        System.out.println(VESE_ANCII_ART);
 
-        //CAA = Console Application API
-        service = new Timer("Console");
-        caa = new CAA(System.in,service ,true);
+        System.out.println("Starting VESE " +ConsoleColors.CYAN_BRIGHT + VERSION);
+        System.out.println(ConsoleColors.GREEN_BRIGHT + "__   __ ___  ___  ___");
+        System.out.println(ConsoleColors.GREEN_BRIGHT +"\\ \\ / /| __|/ __|| __|");
+        System.out.println(ConsoleColors.GREEN_BRIGHT +" \\   / | _| \\__ \\| _|");
+        System.out.println(ConsoleColors.GREEN_BRIGHT +"  \\_/  |___||___/|___|");
+        System.out.println();
 
-        System.out.println("VESE was found in: " + location.getAbsolutePath());
+        System.out.println("VESE was found in: " + ConsoleColors.YELLOW_BRIGHT + location.getAbsolutePath());
 
 
         registerCommands();
@@ -115,6 +117,13 @@ public class VESE {
         SpringApplication.run(WebServiceApplication.class, args);
 
         //Outputting general Information
+
+
+
+        //setting console prefix
+        caa.setPrefix(PREFIX);
+        System.out.println(ConsoleColors.GREEN_BRIGHT + "VESE is now ready to use. Type 'help' for help");
+        System.out.print(PREFIX);
 
     }
 

@@ -12,7 +12,7 @@ A participant is like a real life person it has a personality, capital, needs an
 Also it can trade stocks and buy items from the market.
  */
 
-import de.vese.vese.market.MarketDAO;
+import de.vese.vese.db.MarketDAO;
 import de.vese.vese.simulation.market.Offer;
 
 import java.util.List;

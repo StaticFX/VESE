@@ -1,121 +1,120 @@
 package de.vese.vese.logger;
 
-import com.diogonunes.jcolor.Ansi;
-import com.diogonunes.jcolor.AnsiFormat;
 import de.vese.vese.VESE;
-import de.vese.vese.util.ColorTranslator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.boot.ansi.AnsiColor;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class VESEOutStream extends PrintStream {
 
-    private Ansi ansi = new Ansi();
 
     public VESEOutStream(@NotNull File file) throws FileNotFoundException {
         super(file);
     }
 
+
+
     @Override
-    public void print(boolean b) {
+    public void print(boolean x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + b)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + b)));    }
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);    }
 
     @Override
-    public void print(char c) {
+    public void print(char x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + c)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + c)));    }
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);    }
 
     @Override
-    public void print(int i) {
+    public void print(int x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: "+ i)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + i)));    }
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);    }
 
     @Override
-    public void print(long l) {
+    public void print(long x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: "+ l)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + l)));    }
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);    }
 
     @Override
-    public void print(float f) {
+    public void print(float x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: "+ f)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + f)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
-    public void print(double d) {
+    public void print(double x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + d)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + d)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
-    public void print(@NotNull char[] s) {
+    public void print(@NotNull char[] x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + s)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + s)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
-    public void print(@Nullable String s) {
+    public void print(@Nullable String x) {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
+
+
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + s)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + s)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
-    public void print(@Nullable Object obj) {
+    public void print(@Nullable Object x) {
         //Logging process
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + obj)));
+        VESE.getInstance().getConsole().print(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + obj)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -124,10 +123,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: ")));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET +ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: ")));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET  + ConsoleColors.RESET);
     }
 
     @Override
@@ -136,10 +135,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -148,10 +147,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -160,10 +159,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -172,10 +171,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -184,10 +183,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -196,10 +195,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -208,10 +207,10 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -219,17 +218,11 @@ public class VESEOutStream extends PrintStream {
         //Logging process
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
-
-        String[] out = cutStringToExpressions(x);
-
-
-
-
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
     @Override
@@ -238,58 +231,14 @@ public class VESEOutStream extends PrintStream {
         String time = new SimpleDateFormat("hh:mm:ss").format(new Date(System.currentTimeMillis()));
 
         //Console logging
-        VESE.getInstance().getConsole().println(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getConsole().println(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
 
         //File logging
-        VESE.getInstance().getLogger().logToFile(Ansi.colorize(ColorTranslator.translateColorToAnsi("§8[§aVESE§8] [§f"+ time + "§8] §r: " + x)));
+        VESE.getInstance().getLogger().logToFile(ConsoleColors.BLACK_BRIGHT+ "[" + ConsoleColors.GREEN_BRIGHT + "VESE" + ConsoleColors.BLACK_BRIGHT + "] ["+ ConsoleColors.RED_BRIGHT + time + ConsoleColors.BLACK_BRIGHT + "] : " + ConsoleColors.RESET + x + ConsoleColors.RESET);
     }
 
 
     public String[] cutStringToExpressions(String in) {
-        ArrayList<String> expressions = new ArrayList<>();
-
-        //go trough all char in the given string, but not the last one, because it cant be a valid regex
-        for(int i = 0; i < in.length()-1; i++) {
-            String regexCombination;
-
-            //get the char on the current position of the loop
-            char inChar = in.toCharArray()[i];
-            char nextChar = in.toCharArray()[i+1];
-
-            regexCombination = "" + inChar + nextChar;
-
-            //first char is a valid regex expression
-            if(("" + inChar + nextChar).matches("§[0-9a-f]")) {
-                //loop used to scan for multiple regex usages like §6§l (gold + bold)
-
-                int j = 0;
-                System.out.print(i+3+j);
-                while(i+2+j < in.length()) {
-
-                    char firstChar = in.toCharArray()[i+2+j];
-                    char secondChar = in.toCharArray()[i+3+j];
-
-                    if(("" + firstChar + secondChar).matches("§[0-9a-f]"))
-                        regexCombination = regexCombination + firstChar + secondChar;
-
-                    j++;
-                }
-            }
-
-            expressions.add(regexCombination);
-
-        }
-
-
-        String[] tests = in.split("(§[0-9a-f])+");
-        for(int i = 1; i < tests.length; i++) {
-            tests[i] = expressions.get(i-1) + tests[i];
-        }
-
-        System.out.println(Arrays.toString(tests));
-
-        return tests;
-
+        return in.split("§[0-9a-f]+");
     }
-
 }
