@@ -1,6 +1,9 @@
 package de.vese.vese.simulation.participant;
 
 public enum Trait {
+    /*
+    Measured in Percentages
+     */
     IQ(0,50),
     EQ(1,50);
 

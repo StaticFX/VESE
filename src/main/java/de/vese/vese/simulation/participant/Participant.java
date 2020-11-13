@@ -12,8 +12,8 @@ A participant is like a real life person it has a personality, capital, needs an
 Also it can trade stocks and buy items from the market.
  */
 
-import de.vese.vese.db.MarketDAO;
 import de.vese.vese.simulation.market.Offer;
+import de.vese.vese.simulation.utilities.Utilities;
 
 import java.util.List;
 
@@ -31,13 +31,15 @@ public class Participant {
         this.alive = alive;
     }
     //Self-Made functions
-
+    public void randomizePersonality() {
+        personality.randomize();
+    }
     public void buyItems() {
         //While you have enough money to buy something AND want to buy something
         boolean isWillingToBuy = true;
-        while((capital >= MarketDAO.getCheapestPrice()) && isWillingToBuy) {
+        while((capital >= Utilities.getCheapestPrice()) && isWillingToBuy) {
             //go through all markets and evaluate them then buy if you want to
-            List<Offer> cheapestOffers = MarketDAO.getCheapestOffers();
+            List<Offer> cheapestOffers = Utilities.getCheapestOffers();
             double bestOfferEvaluation = 0;
             Offer bestOffer = null;
             for (Offer offer : cheapestOffers) {
@@ -49,7 +51,6 @@ public class Participant {
             buy(bestOffer, 1);
         }
     }
-
     public double evaluateOffer(Offer offer) {
         //Get the gets, wants, prioritization values in form of lists
         List<Double> gets = offer.getProduct().getNeedsSatisfied();
@@ -62,11 +63,10 @@ public class Participant {
         }
         return evaluation;
     }
-
     public void buy(Offer offer, int amount) {
         double price = offer.getPrice();
         offer.setAmount(offer.getAmount() - amount);
-        capital -= price;
+        capital -= price*amount;
         for(int i = 0;i < offer.getProduct().getNeedsSatisfied().size(); i++) {
             double needOfProduct = offer.getProduct().getNeedsSatisfied().get(i);
             double needOfParticipant = needs.getNeedValueList().get(i);

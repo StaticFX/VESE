@@ -7,9 +7,10 @@ package de.vese.vese.simulation.participant;
  */
 
 import java.util.List;
+import java.util.Random;
 
 /*
-    All measured from -100 to 100 (meant as %) except priorizationValues
+    All measured from -100 to 100 (meant as %) except priorizationValues (measured from 0 to 100)
     These influence the Needs.
      */
 public class Personality {
@@ -21,6 +22,16 @@ public class Personality {
         this.priorizationValues = priorizationValues;
         this.valueOfTraits = valueOfTraits;
 
+    }
+    public void randomize() {
+        Random r = new Random();
+        for(int i = 0; i < Need.values().length; i++) {
+            importanceOfNeed.set(i, -1 + 2 * r.nextDouble());
+            priorizationValues.set(i, 50.0);
+        }
+        for (int i = 0; i < Trait.values().length;i++) {
+            valueOfTraits.set(i,-1 + 2 * r.nextDouble());
+        }
     }
     //Getter and Setter
 
