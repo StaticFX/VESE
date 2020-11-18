@@ -20,6 +20,11 @@ public class Offer {
         this.company = company;
     }
 
+    public void returnToCompany() {
+        company.setStock(company.getStock() + amount);
+
+    }
+
     public Item getProduct() {
         return product;
     }

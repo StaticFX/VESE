@@ -1,7 +1,8 @@
-package de.vese.vese.simulation.utilities;
+package de.vese.vese.simulation.util;
 
 import de.vese.vese.simulation.company.Company;
 import de.vese.vese.simulation.market.Item;
+import de.vese.vese.simulation.market.JobMarket;
 import de.vese.vese.simulation.market.Market;
 import de.vese.vese.simulation.market.Offer;
 import de.vese.vese.simulation.participant.Need;
@@ -10,9 +11,16 @@ import de.vese.vese.simulation.participant.Participant;
 import de.vese.vese.simulation.participant.Personality;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class Utilities {
+public class Util {
+    public static JobMarket getJobMarket(UUID simulationID) {
+        return null;
+    }
     public static Market getMarket(Item item) {
+        return null;
+    }
+    public static List<Market> getMarkets() {
         return null;
     }
     public static void createItems(int amount) {
@@ -37,19 +45,19 @@ public class Utilities {
         //remember Database stuff
         return null;
     }
-    public static void createCompany(Item product,double profitMargin, double capital,int simulationID) {
-        Company company = new Company(null, product,0,profitMargin,0, capital);
+    public static void createCompany(Item product, double profitMargin, double capital, UUID simulationID) {
+        Company company = new Company(null, product,0,profitMargin,0, capital,1000);
         //Remember to save them in the Database
     }
     public static List<Company> getCompanies() {
         //Remember Database blablabla
         return null;
     }
-    public static void createMarket(Item item, int simulationID) {
+    public static void createMarket(Item item, UUID simulationID) {
         Market market = new Market(null,item);
         //Remember to save in the Database
     }
-    public static List<Item> getItems(int simulationID) {
+    public static List<Item> getItems(UUID simulationID) {
         return null;
     }
     public static double getCheapestPrice() {

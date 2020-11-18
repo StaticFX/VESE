@@ -25,6 +25,12 @@ public class Market {
     public void makeOffer(Offer offer) {
         offers.add(offer);
     }
+    public void returnLeftovers() {
+        for(Offer offer : offers) {
+            offer.returnToCompany();
+        }
+        offers = null;
+    }
     //Getter and Setter
 
 

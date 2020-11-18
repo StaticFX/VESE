@@ -13,7 +13,7 @@ Also it can trade stocks and buy items from the market.
  */
 
 import de.vese.vese.simulation.market.Offer;
-import de.vese.vese.simulation.utilities.Utilities;
+import de.vese.vese.simulation.util.Util;
 
 import java.util.List;
 
@@ -37,9 +37,9 @@ public class Participant {
     public void buyItems() {
         //While you have enough money to buy something AND want to buy something
         boolean isWillingToBuy = true;
-        while((capital >= Utilities.getCheapestPrice()) && isWillingToBuy) {
+        while((capital >= Util.getCheapestPrice()) && isWillingToBuy) {
             //go through all markets and evaluate them then buy if you want to
-            List<Offer> cheapestOffers = Utilities.getCheapestOffers();
+            List<Offer> cheapestOffers = Util.getCheapestOffers();
             double bestOfferEvaluation = 0;
             Offer bestOffer = null;
             for (Offer offer : cheapestOffers) {

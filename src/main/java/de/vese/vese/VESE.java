@@ -132,6 +132,7 @@ public class VESE {
         caa.commandHandler.registerCommand(new EndCommand("","end","End Vese and saves all data"));
         caa.commandHandler.registerCommand(new HelpCommand("","help", "Use ?command to see a commands descirption"));
         caa.commandHandler.registerCommand(new ListCommandsCommand("","listcommands", "Lists every command"));
+
     }
 
     public static void stop() {
