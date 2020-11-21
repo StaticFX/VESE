@@ -26,6 +26,7 @@ import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
+import de.vese.vese.commands.TestCommand;
 import de.vese.vese.logger.ConsoleColors;
 import de.vese.vese.logger.Logger;
 import org.springframework.boot.SpringApplication;
@@ -132,7 +133,7 @@ public class VESE {
         caa.commandHandler.registerCommand(new EndCommand("","end","End Vese and saves all data"));
         caa.commandHandler.registerCommand(new HelpCommand("","help", "Use ?command to see a commands descirption"));
         caa.commandHandler.registerCommand(new ListCommandsCommand("","listcommands", "Lists every command"));
-
+        caa.commandHandler.registerCommand(new TestCommand("","test", "tests stuff"));
     }
 
     public static void stop() {

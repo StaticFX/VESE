@@ -4,16 +4,22 @@ import de.vese.vese.simulation.participant.Needs;
 
 import java.util.List;
 
-/*
-    VESE - Item
-    Version: 1.0.0
-    Author: David
-    Alias: Dawitschi
+/**
+ * An Item is a Object which satisfies the needs of participants and has some production costs
+ *
+ * @author David
+ * @version 1.0.0
  */
 public class Item {
 
     private Needs needsSatisfied;
     private double productionCosts;
+
+    /**
+     *
+     * @param needsSatisfied all needs satisfied from the Item
+     * @param productionCosts the production cost for the Item
+     */
     public Item(Needs needsSatisfied, double productionCosts) {
         this.needsSatisfied = needsSatisfied;
         this.productionCosts = productionCosts;

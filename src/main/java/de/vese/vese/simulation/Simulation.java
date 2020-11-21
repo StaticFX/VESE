@@ -8,25 +8,42 @@ import de.vese.vese.simulation.util.Util;
 
 import java.util.UUID;
 
-
+/**
+ * The Simulation from which all is managed
+ *
+ * @author David
+ * @version 1.0.0
+ */
 public class Simulation {
+    /**
+     * STARTINGCAPITAL_PARTICIPANT is the starting capital of a participant
+     * STARTINGPROFITMARGIN is the initial profit margin of a company
+     * STARTINGCAPITAL_COMPANY is the starting capital of a company
+     */
     private final double STARTINGCAPITAL_PARTICIPANT = 1000;
     private final double STARTINGPROFITMARGIN = 0.1;
     private final double STARTINGCAPITAL_COMPANY = 100000;
 
     private UUID id;
 
+    /**
+     * @param id the ID of the simulation
+     */
     public Simulation(UUID id) {
         this.id = id;
     }
 
+    /**
+     * simulates one turn.
+     * For more detailed information about how a turn gets simulated check the comments in the method
+     */
     public void simulateTurn() {
         //Companies change Price
         //Companies produce
         //Participants get paid
         //Companies offer on Market
         for(Company company : Util.getCompanies()) {
-            company.changeProfitMargin(); //Also fires Participants
+            company.changeProfitMargin();
             company.produce();
             company.offerProduct();
         }
@@ -50,6 +67,12 @@ public class Simulation {
 
     }
 
+    /**
+     * Initializes a new Simulation
+     * @param amountOfParticipants amount of participants
+     * @param amountOfCompaniesPerItem amount of companies per item
+     * @param amountOfItems amount of items
+     */
     public void initSimulation(int amountOfParticipants,int amountOfCompaniesPerItem, int amountOfItems) {
         //Generate Participants
         Util.createParticipants(amountOfParticipants, STARTINGCAPITAL_PARTICIPANT);

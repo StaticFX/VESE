@@ -7,16 +7,36 @@ import de.vese.vese.simulation.participant.Participant;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * A special Market where all unemployed Participants are listed.
+ * Companies bid for the unemployed if they want.
+ *
+ * @author David
+ * @version 1.0.0
+ */
 public class JobMarket {
     private List<Participant> unemployed;
     private HashMap<Participant, Company> participantCompany;
     private HashMap<Participant, Double> participantPay;
+
+    /**
+     * @param unemployed List of all unemployed participants
+     * @param participantCompany Company with the highest bid for every unemployed
+     * @param participantPay highest bid for every unemployed
+     */
     public JobMarket(List<Participant> unemployed, HashMap<Participant, Company> participantCompany, HashMap<Participant, Double> participantPay){
         this.unemployed = unemployed;
         this.participantCompany = participantCompany;
         this.participantPay = participantPay;
     }
     //Selfmade functions
+
+    /**
+     * updates the status of every participant
+     *      -employs him if some company bid for him
+     *      -removes participants if they are employed
+     *      -resets the two Hashmaps
+     */
     public void update() {
         for(Participant participant : unemployed) {
             if(participantCompany.get(participant) != null) {
@@ -53,6 +73,7 @@ public class JobMarket {
     public List<Participant> getUnemployed() {
         return unemployed;
     }
+
     public void setUnemployed(List<Participant> unemployed) {
         this.unemployed = unemployed;
     }
