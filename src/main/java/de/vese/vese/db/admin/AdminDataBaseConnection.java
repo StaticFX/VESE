@@ -1,16 +1,22 @@
 package de.vese.vese.db;
 
 import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import de.vese.vese.VESE;
 import de.vese.vese.exceptions.IllegalCreationException;
-import de.vese.vese.filemanager.ConfigFileManager;
 
-public class DataBaseConnection {
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-    private DataBaseConnection INSTANCE = null;
+public class AdminDataBaseConnection {
+
+    private AdminDataBaseConnection INSTANCE = null;
     private HikariConfig config;
+    private HikariDataSource dataSource;
 
-    public DataBaseConnection() throws IllegalCreationException {
+    public AdminDataBaseConnection() throws IllegalCreationException {
 
         if(INSTANCE != null) throw new IllegalCreationException("There is already an instance of " + getClass().getName());
 
@@ -20,7 +26,7 @@ public class DataBaseConnection {
         String password = VESE.getInstance().getConfig().getDAO().getString("SQL_PASSWORD");
         String port = VESE.getInstance().getConfig().getDAO().getString("SQL_PORT");
         String host = VESE.getInstance().getConfig().getDAO().getString("SQL_HOST");
-
+        String database = VESE.getInstance().getConfig().getDAO().getString("ADMIN_SQL_DATABASE");
         config = new HikariConfig();
         config.setUsername(user);
         config.setPassword(password);
@@ -29,12 +35,24 @@ public class DataBaseConnection {
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
         config.setMaxLifetime(50000);
 
-        config.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + "");
+        config.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + database);
 
+        dataSource = new HikariDataSource(config);
 
     }
 
+    public void executeUpdate(String SQL, Object... objects) throws SQLException {
 
+        Connection connection = dataSource.getConnection();
 
+        PreparedStatement ps = connection.prepareStatement(SQL);
+        for(int i = 0; i < objects.length; i++) {
+            ps.setObject(i+1, objects[i]);
+        }
 
+        ps.executeUpdate();
+        ps.close();
+        connection.close();
+
+    }
 }
