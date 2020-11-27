@@ -26,12 +26,10 @@ public class AccountDAO extends DAO {
     AdminDataBaseConnection adminDataBaseConnection;
 
 
-
     public AccountDAO() {
         super(AdminDataBaseStructure.ACCOUNTDAO);
         adminDataBaseConnection = VESE.getInstance().getAdminDataBaseConnection();
     }
-
 
 
     @Override
@@ -51,14 +49,13 @@ public class AccountDAO extends DAO {
         int i = metaData.getColumnCount();
 
 
-        String primaryKeyColumn = meta.getPrimaryKeys(null,null,"accounts").getMetaData().getColumnName(1);
+        String primaryKeyColumn = meta.getPrimaryKeys(null, null, "accounts").getMetaData().getColumnName(1);
 
 
-        for(int j = 1; j < i+1; j++) {
+        for (int j = 1; j < i + 1; j++) {
             boolean primary = primaryKeyColumn.equals(metaData.getColumnLabel(j));
             columns.add(new Column(metaData.getColumnLabel(j), null, primary));
         }
-
 
 
         return new DataBaseStructure(columns);
@@ -70,14 +67,10 @@ public class AccountDAO extends DAO {
         con.executeUpdate("CREATE TABLE IF NOT EXISTS accounts(temp VARCHAR(1))");
 
 
-
-
         DataBaseStructure structure = getCurrentStructure();
 
 
-
-
-        if(!DataBaseStructure.equals(structure, AdminDataBaseStructure.ACCOUNTDAO)) {
+        if (!DataBaseStructure.equals(structure, AdminDataBaseStructure.ACCOUNTDAO)) {
             updateDataBase(AdminDataBaseStructure.ACCOUNTDAO);
         }
 
@@ -92,33 +85,31 @@ public class AccountDAO extends DAO {
         List<Column> columnsToBeDeleted = new ArrayList<>();
 
 
-
-        for(Column column : structure.getColumnList()) {
-            if(!DataBaseStructure.containsColumnIgnoreType(oldStructure.getColumnList(),column)) {
+        for (Column column : structure.getColumnList()) {
+            if (!DataBaseStructure.containsColumnIgnoreType(oldStructure.getColumnList(), column)) {
                 columnsToBeAdded.add(column);
             }
         }
 
-        for(Column column : oldStructure.getColumnList()) {
-            if(!DataBaseStructure.containsColumnIgnoreType(structure.getColumnList(),column)) {
+        for (Column column : oldStructure.getColumnList()) {
+            if (!DataBaseStructure.containsColumnIgnoreType(structure.getColumnList(), column)) {
                 columnsToBeDeleted.add(column);
             }
         }
 
 
-
-        for(Column column : columnsToBeAdded) {
+        for (Column column : columnsToBeAdded) {
             AdminDataBaseConnection con = VESE.getInstance().getAdminDataBaseConnection();
 
-            if(column.isPrimaryKey()) {
-                con.executeUpdate("ALTER TABLE accounts ADD " +column.getName() +  " " + column.getSQLDataType() + " PRIMARY KEY");
-            }else{
-                con.executeUpdate("ALTER TABLE accounts ADD " +column.getName() +  " " + column.getSQLDataType());
+            if (column.isPrimaryKey()) {
+                con.executeUpdate("ALTER TABLE accounts ADD " + column.getName() + " " + column.getSQLDataType() + " PRIMARY KEY");
+            } else {
+                con.executeUpdate("ALTER TABLE accounts ADD " + column.getName() + " " + column.getSQLDataType());
             }
 
         }
 
-        for(Column column : columnsToBeDeleted) {
+        for (Column column : columnsToBeDeleted) {
             AdminDataBaseConnection con = VESE.getInstance().getAdminDataBaseConnection();
             con.executeUpdate("ALTER TABLE accounts DROP COLUMN " + column.getName());
         }

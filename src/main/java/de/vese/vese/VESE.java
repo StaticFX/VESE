@@ -26,6 +26,7 @@ import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
+import de.vese.vese.commands.TestCommand;
 import de.vese.vese.db.admin.AccountDAO;
 import de.vese.vese.db.admin.AdminDataBaseConnection;
 import de.vese.vese.exceptions.CantReadFileException;
