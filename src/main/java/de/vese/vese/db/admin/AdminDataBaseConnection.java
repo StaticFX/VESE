@@ -1,16 +1,16 @@
-package de.vese.vese.db;
+package de.vese.vese.db.admin;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import de.vese.vese.VESE;
+import de.vese.vese.db.DataBaseConnection;
 import de.vese.vese.exceptions.IllegalCreationException;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AdminDataBaseConnection {
+public class AdminDataBaseConnection implements DataBaseConnection {
 
     private AdminDataBaseConnection INSTANCE = null;
     private HikariConfig config;
@@ -34,6 +34,7 @@ public class AdminDataBaseConnection {
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );
         config.setMaxLifetime(50000);
+        config.setDriverClassName("org.mariadb.jdbc.Driver");
 
         config.setJdbcUrl("jdbc:mysql://" + host + ":" + port + "/" + database);
 
@@ -41,6 +42,12 @@ public class AdminDataBaseConnection {
 
     }
 
+    @Override
+    public void loadDataBaseStructure() throws SQLException {
+
+    }
+
+    @Override
     public void executeUpdate(String SQL, Object... objects) throws SQLException {
 
         Connection connection = dataSource.getConnection();
@@ -54,5 +61,9 @@ public class AdminDataBaseConnection {
         ps.close();
         connection.close();
 
+    }
+
+    public HikariDataSource getDataSource() {
+        return dataSource;
     }
 }
