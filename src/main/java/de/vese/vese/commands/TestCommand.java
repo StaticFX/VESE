@@ -5,6 +5,7 @@ import de.staticred.caa.commandapi.util.CommandSender;
 import de.staticred.caa.commandapi.util.ConsoleSender;
 import de.vese.vese.simulation.company.Company;
 import de.vese.vese.simulation.market.Item;
+import de.vese.vese.simulation.market.Offer;
 import de.vese.vese.simulation.participant.Job;
 import de.vese.vese.simulation.participant.Need;
 import de.vese.vese.simulation.participant.Needs;
@@ -51,7 +52,10 @@ public class TestCommand extends Command {
         Job job1 = new Job(company, participant1, 1000);
         company.getJobs().add(job);
         company.getJobs().add(job1);
+        //Create Offer
+        Offer k = new Offer(product,100,1,company);
         //Test
-
+        System.out.println(participant.evaluateOffer(k));
+        System.out.println(participant1.evaluateOffer(k));
     }
 }

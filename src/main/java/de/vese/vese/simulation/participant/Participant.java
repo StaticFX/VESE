@@ -101,7 +101,7 @@ public class Participant {
         //Evaluating Item
         double evaluation = 0;
         for (int i = 0; i < gets.size(); i++) {
-            evaluation += (gets.get(i) * wants.get(i) * prioritizationValues.get(i)) / offer.getPrice();
+            evaluation += (gets.get(i) * (100/wants.get(i)) * prioritizationValues.get(i)) / offer.getPrice();
         }
         return evaluation;
     }

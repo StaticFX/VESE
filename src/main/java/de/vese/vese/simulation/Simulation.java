@@ -88,5 +88,11 @@ public class Simulation {
                 Util.createCompany(item, STARTINGPROFITMARGIN, STARTINGCAPITAL_COMPANY, id);
             }
         }
+        //Create Jobmarket and add all Participants to it
+        Util.createJobmarket();
+        for (Participant participant : Util.getParticipants()) {
+            Util.addPartJobmarket(participant);
+        }
+
     }
 }

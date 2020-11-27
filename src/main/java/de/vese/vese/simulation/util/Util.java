@@ -134,4 +134,19 @@ public class Util {
         //Database stuff
         return null;
     }
+
+    /**
+     * Initializes the Jobmarket
+     */
+    public static void createJobmarket() {
+
+    }
+
+    /**
+     * Adds a participant to the Jobmarket
+     * @param participant Partiipant to add
+     */
+    public static void addPartJobmarket(Participant participant) {
+
+    }
 }
