@@ -1,0 +1,10 @@
+{
+
+  "SQL_USER": "Root",
+  "SQL_PASSWORD": "",
+  "SQL_PORT": 3306,
+  "SQL_HOST": "localhost",
+  "ADMIN_SQL_DATABASE": "vese_admin",
+  "VESE_SQL_DATABASE": "vese_vese"
+
+}

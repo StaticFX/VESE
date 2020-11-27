@@ -26,7 +26,11 @@ import de.vese.vese.backendrouting.webservice.WebServiceApplication;
 import de.vese.vese.commands.EndCommand;
 import de.vese.vese.commands.HelpCommand;
 import de.vese.vese.commands.ListCommandsCommand;
-import de.vese.vese.commands.TestCommand;
+import de.vese.vese.db.admin.AccountDAO;
+import de.vese.vese.db.admin.AdminDataBaseConnection;
+import de.vese.vese.exceptions.CantReadFileException;
+import de.vese.vese.exceptions.IllegalCreationException;
+import de.vese.vese.filemanager.ConfigFileManager;
 import de.vese.vese.logger.ConsoleColors;
 import de.vese.vese.logger.Logger;
 import org.springframework.boot.SpringApplication;
@@ -36,6 +40,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.PrintStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Timer;
 
@@ -56,13 +61,6 @@ public class VESE {
 
     public static final String PREFIX = "VESE\\> ";
 
-    //Termial via the. JLine 3 API
-
-    public static final String VESE_ANCII_ART = "__   __ ___  ___  ___" +
-            "\\ \\ / /| __|/ __|| __|" +
-            " \\   / | _| \\__ \\| _|" +
-            "  \\_/  |___||___/|___|";
-
     private PrintStream console;
 
     private SimpleDateFormat savingTimeFormat =  new SimpleDateFormat("dd MM yyyy HH-mm-ss");
@@ -71,6 +69,13 @@ public class VESE {
     private long startMillis;
 
     public static RouterManager routingManger;
+
+    private ConfigFileManager config;
+
+    private AccountDAO accountDAO;
+
+    //Connection to the SQL_ADMIN_DATABASE point
+    private AdminDataBaseConnection adminDataBaseConnection;
 
     //VESE main startup Method
     public static void main(String[] args) {
@@ -120,6 +125,32 @@ public class VESE {
         //Outputting general Information
 
 
+        //config.json file
+        config = new ConfigFileManager(new File(location.getAbsolutePath() + "/VESEFiles/config.json"));
+        try {
+            config.loadFile();
+        } catch (CantReadFileException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        System.out.println("Trying to connect to database");
+        try {
+            adminDataBaseConnection = new AdminDataBaseConnection();
+        } catch (IllegalCreationException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("Loading table Accounts");
+        accountDAO = new AccountDAO();
+        try {
+            accountDAO.loadDataBase();
+        } catch (SQLException throwables) {
+            System.out.println(ConsoleColors.RED_BRIGHT + "Failed while loading database.");
+            throwables.printStackTrace();
+            return;
+        }
+
 
         //setting console prefix
         caa.setPrefix(PREFIX);
@@ -162,5 +193,13 @@ public class VESE {
 
     public CAA getCaa() {
         return caa;
+    }
+
+    public ConfigFileManager getConfig() {
+        return config;
+    }
+
+    public AdminDataBaseConnection getAdminDataBaseConnection() {
+        return adminDataBaseConnection;
     }
 }

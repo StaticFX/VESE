@@ -4,6 +4,7 @@ import de.staticred.caa.commandapi.util.Command;
 import de.staticred.caa.commandapi.util.CommandSender;
 import de.staticred.caa.commandapi.util.ConsoleSender;
 import de.vese.vese.VESE;
+import de.vese.vese.logger.ConsoleColors;
 
 import javax.sound.midi.SysexMessage;
 
@@ -25,9 +26,8 @@ public class ListCommandsCommand extends Command {
         if(!(commandSender instanceof ConsoleSender)) {
             return;
         }
-        System.out.println("Here's a list of all commands:");
         for(Command registeredCommand : VESE.getInstance().getCaa().commandHandler.getRegisteredCommands()) {
-            System.out.println("- " + registeredCommand.getPrefix() + registeredCommand.getCommand());
+            System.out.println(ConsoleColors.BLACK_BRIGHT + "- " + ConsoleColors.YELLOW_BRIGHT + registeredCommand.getPrefix() + registeredCommand.getCommand());
         }
     }
 }

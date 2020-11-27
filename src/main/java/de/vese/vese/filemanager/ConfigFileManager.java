@@ -41,11 +41,10 @@ public class ConfigFileManager implements FileManager {
 
     @Override
     public void saveFie() {
-
     }
 
     @Override
     public JSONObject getDAO() {
-        return null;
+        return DAO;
     }
 }
