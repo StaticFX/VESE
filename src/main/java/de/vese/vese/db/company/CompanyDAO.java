@@ -1,43 +1,46 @@
-package de.vese.vese.db.admin;
+package de.vese.vese.db.company;
 
 import de.vese.vese.VESE;
 import de.vese.vese.db.Column;
 import de.vese.vese.db.DAO;
 import de.vese.vese.db.DataBaseStructure;
+import de.vese.vese.db.admin.AdminDataBaseConnection;
+import de.vese.vese.db.admin.AdminDataBaseStructure;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- *Models a Access object to the account table
- *
- * @author Devin
- * @version 1.0.0
- */
-
-
-public class AccountDAO extends DAO {
+public class CompanyDAO extends DAO {
 
     /**
-     * Indicates an Connection to the Admin database as set in the config
+     * SimulationID is the ID of the Simulation
+     * Capital is the amount of money the company has
+     * Product the item the company sells
+     * stock gow much of the Item the company has currently
+     * Profitmargin current profit margin
+     * lastExpenses expenses of the last turn
+     * HiringEval the Evaluation a Participant needs to get a Job offer
      */
-    AdminDataBaseConnection adminDataBaseConnection;
+    public static final DataBaseStructure PARTICIPANTDAO = new DataBaseStructure((Arrays.asList(
+            new Column("SimulationID","VARCHAR(36)", false),
+            new Column("Capital","DOUBLE",false),
+            new Column("Product","DOUBLE",false),
+            new Column("Stock","DOUBLE",false),
+            new Column("Profitmargin","DOUBLE",false),
+            new Column("lastExpenses","DOUBLE",false),
+            new Column("HiringEval","DOUBLE",false))));
 
-
-
-    public AccountDAO() {
-        super(AdminDataBaseStructure.ACCOUNTDAO);
-        adminDataBaseConnection = VESE.getInstance().getAdminDataBaseConnection();
+    public CompanyDAO(DataBaseStructure structure) {
+        super(structure);
     }
 
-
-
+    //Devins stuff
     @Override
     public DataBaseStructure getCurrentStructure() throws SQLException {
 
-        Connection connection = adminDataBaseConnection.getDataSource().getConnection();
+        //Connection connection = adminDataBaseConnection.getDataSource().getConnection();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM accounts");
         ResultSet rs = ps.executeQuery();
@@ -80,7 +83,6 @@ public class AccountDAO extends DAO {
         if(!DataBaseStructure.equals(structure, AdminDataBaseStructure.ACCOUNTDAO)) {
             updateDataBase(AdminDataBaseStructure.ACCOUNTDAO);
         }
-
     }
 
     @Override
@@ -127,4 +129,3 @@ public class AccountDAO extends DAO {
     }
 
 }
-

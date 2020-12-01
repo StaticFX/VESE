@@ -16,7 +16,6 @@ public class Item {
     private double productionCosts;
 
     /**
-     *
      * @param needsSatisfied all needs satisfied from the Item
      * @param productionCosts the production cost for the Item
      */

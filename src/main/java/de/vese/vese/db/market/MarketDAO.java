@@ -1,43 +1,40 @@
-package de.vese.vese.db.admin;
+package de.vese.vese.db.market;
 
 import de.vese.vese.VESE;
 import de.vese.vese.db.Column;
 import de.vese.vese.db.DAO;
 import de.vese.vese.db.DataBaseStructure;
+import de.vese.vese.db.admin.AdminDataBaseConnection;
+import de.vese.vese.db.admin.AdminDataBaseStructure;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- *Models a Access object to the account table
- *
- * @author Devin
- * @version 1.0.0
- */
-
-
-public class AccountDAO extends DAO {
+public class MarketDAO extends DAO {
 
     /**
-     * Indicates an Connection to the Admin database as set in the config
+     * SimulationID is the ID of the Simulation this Market belongs to
+     * TradingItem is the ID of the trading item (get it over the items table)
+     * MarketID is the ID of the Market (used to access tables specific to the market)
+     *          such as Offers
      */
-    AdminDataBaseConnection adminDataBaseConnection;
+    public static final DataBaseStructure MARKETDAO = new DataBaseStructure((Arrays.asList(
+            new Column("SimulationID","VARCHAR(36)", true),
+            new Column("TradingItemID","VARCHAR(32)",false),
+            new Column("MarketID","VARCHAR(256)",false))));
 
-
-
-    public AccountDAO() {
-        super(AdminDataBaseStructure.ACCOUNTDAO);
-        adminDataBaseConnection = VESE.getInstance().getAdminDataBaseConnection();
+    public MarketDAO(DataBaseStructure structure) {
+        super(structure);
     }
 
 
-
+    //Devins stuff
     @Override
     public DataBaseStructure getCurrentStructure() throws SQLException {
 
-        Connection connection = adminDataBaseConnection.getDataSource().getConnection();
+        //Connection connection = adminDataBaseConnection.getDataSource().getConnection();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM accounts");
         ResultSet rs = ps.executeQuery();
@@ -80,7 +77,6 @@ public class AccountDAO extends DAO {
         if(!DataBaseStructure.equals(structure, AdminDataBaseStructure.ACCOUNTDAO)) {
             updateDataBase(AdminDataBaseStructure.ACCOUNTDAO);
         }
-
     }
 
     @Override
@@ -127,4 +123,3 @@ public class AccountDAO extends DAO {
     }
 
 }
-

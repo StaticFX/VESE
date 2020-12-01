@@ -1,43 +1,40 @@
-package de.vese.vese.db.admin;
+package de.vese.vese.db.market;
 
 import de.vese.vese.VESE;
 import de.vese.vese.db.Column;
 import de.vese.vese.db.DAO;
 import de.vese.vese.db.DataBaseStructure;
+import de.vese.vese.db.admin.AdminDataBaseConnection;
+import de.vese.vese.db.admin.AdminDataBaseStructure;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/**
- *
- *Models a Access object to the account table
- *
- * @author Devin
- * @version 1.0.0
- */
+public class NeedsItemDAO extends DAO {
 
 
-public class AccountDAO extends DAO {
 
     /**
-     * Indicates an Connection to the Admin database as set in the config
+     * SimulationID ID of the Simulation
+     * ItemID ID of the Item
+     * All needs satisfied by the Item.
      */
-    AdminDataBaseConnection adminDataBaseConnection;
+    public static final DataBaseStructure NEEDSITEMDAO = new DataBaseStructure((Arrays.asList(
+            new Column("SimulationID","VARCHAR(36)", false),
+            new Column("ItemID","VARCHAR(36)", false))));
 
 
-
-    public AccountDAO() {
-        super(AdminDataBaseStructure.ACCOUNTDAO);
-        adminDataBaseConnection = VESE.getInstance().getAdminDataBaseConnection();
+    public NeedsItemDAO(DataBaseStructure structure) {
+        super(structure);
     }
 
-
-
+    //Devins stuff
     @Override
     public DataBaseStructure getCurrentStructure() throws SQLException {
 
-        Connection connection = adminDataBaseConnection.getDataSource().getConnection();
+        //Connection connection = adminDataBaseConnection.getDataSource().getConnection();
 
         PreparedStatement ps = connection.prepareStatement("SELECT * FROM accounts");
         ResultSet rs = ps.executeQuery();
@@ -80,7 +77,6 @@ public class AccountDAO extends DAO {
         if(!DataBaseStructure.equals(structure, AdminDataBaseStructure.ACCOUNTDAO)) {
             updateDataBase(AdminDataBaseStructure.ACCOUNTDAO);
         }
-
     }
 
     @Override
@@ -127,4 +123,3 @@ public class AccountDAO extends DAO {
     }
 
 }
-
